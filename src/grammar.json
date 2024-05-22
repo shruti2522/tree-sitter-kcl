@@ -1014,6 +1014,18 @@
         {
           "type": "SYMBOL",
           "name": "paren_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "optional_attribute"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "optional_item"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "null_coalesce"
         }
       ]
     },
@@ -1859,6 +1871,89 @@
               "type": "SYMBOL",
               "name": "identifier"
             }
+          }
+        ]
+      }
+    },
+    "optional_attribute": {
+      "type": "PREC",
+      "value": 22,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "object",
+            "content": {
+              "type": "SYMBOL",
+              "name": "primary_expression"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "?."
+          },
+          {
+            "type": "FIELD",
+            "name": "attribute",
+            "content": {
+              "type": "SYMBOL",
+              "name": "identifier"
+            }
+          }
+        ]
+      }
+    },
+    "optional_item": {
+      "type": "PREC",
+      "value": 22,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "object",
+            "content": {
+              "type": "SYMBOL",
+              "name": "primary_expression"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "?["
+          },
+          {
+            "type": "FIELD",
+            "name": "index",
+            "content": {
+              "type": "SYMBOL",
+              "name": "expression"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "]"
+          }
+        ]
+      }
+    },
+    "null_coalesce": {
+      "type": "PREC",
+      "value": 2,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "STRING",
+            "value": "or"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
           }
         ]
       }
